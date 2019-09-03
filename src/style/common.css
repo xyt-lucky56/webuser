@@ -1,0 +1,70 @@
+
+
+/*-------------------------------------------- 以下部分为常用样式----------------------------------- */
+
+/* 清除浮动 */
+.clear:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.clear {
+  zoom: 1;
+}
+
+/* 背景图平铺 */
+.back_img {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/*块居中*/
+.margin {
+  margin: 0 auto;
+}
+
+/* 浮动 */
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+
+/* 显示 */
+.hide {
+  display: none;
+}
+
+/* 隐藏 */
+.show {
+  display: block;
+}
+
+/* 超出部分省略 */
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+ 
+
+/* 隔行变色 */
+.view-row.layui-table tr:nth-child(2n){
+  background-color: #1ab394;
+  color:#fff
+}
+
+/* 单独某一个变色 */
+.view-grid{
+  background-color: pink;
+  color:#fff;
+}
+
+/* 鼠标悬浮时变色 */
+.view-hover.layui-table tr:hover{
+  background-color: #ff3040;
+  color:#fff;
+}
+
+/* 测试提交 */
