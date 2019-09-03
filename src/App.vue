@@ -7,6 +7,7 @@
 <script>
 import '@/style/common.css';
 import '@/style/base.css';
+import '@/style/mixin.less';
 export default {
   name: 'App'
 }
