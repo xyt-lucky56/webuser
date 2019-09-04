@@ -68,3 +68,26 @@
 }
 
 /* 测试提交 */
+.layui-btn-xs {
+  height: 24px;
+  line-height: 24px;
+  padding: 0 6px;
+  font-size: 12px;
+}
+.layui-btn-sm{
+  width:100px;
+}
+.addbtn{
+  width: 120px;
+  height: 36px;
+  line-height: 36px;
+}
+.bg1{
+  background-color: #ed5565;
+}
+.bg2{
+  background-color: #1c84c6;
+}
+.bg3{
+  background-color: #23c6c8;
+}
