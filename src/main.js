@@ -18,6 +18,7 @@ Router.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
 }
 
+import './mock' // mock.js文件
 
 /* eslint-disable no-new */
 new Vue({
