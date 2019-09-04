@@ -31,21 +31,26 @@ export default function (tableId, url, headerData, params, isPage = true, limit=
                     statusCode: "10000",
                 }
                 , parseData: (res) => {
-                    if(res.execCode=='S'){
-                        return {
-                            "code": res.statusCode,
-                            "msg": res.statusMsg, //解析提示文本
-                            "count": res.content.total, //解析数据长度
-                            "data": res.content.list,//解析数据列表
-                        }
-                    }else{
-                        return {
-                            "code": res.statusCode,
-                            "msg": '暂无数据', 
-                            "count": 0,
-                            "data":[],
-                        }
+                    return{
+                        "code": res.code,
+                        "count": res.count,
+                        "data": res.data,
                     }
+                    // if(res.execCode=='S'){
+                    //     return {
+                    //         "code": res.statusCode,
+                    //         "msg": res.statusMsg, //解析提示文本
+                    //         "count": res.content.total, //解析数据长度
+                    //         "data": res.content.list,//解析数据列表
+                    //     }
+                    // }else{
+                    //     return {
+                    //         "code": res.statusCode,
+                    //         "msg": '暂无数据', 
+                    //         "count": 0,
+                    //         "data":[],
+                    //     }
+                    // }
                 }
                 , done: function done(res, curr, count) {
                     resolve({ res, curr, count })
