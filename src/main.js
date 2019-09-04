@@ -7,6 +7,7 @@ import router from './router'
 import axios from 'axios'
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
+
 import { message } from '@/filter/common'
 Vue.prototype.$message = message
 

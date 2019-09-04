@@ -25,8 +25,8 @@ export default {
     data(){
         return{
             cols:[[
-                {field:'ID', title: 'ID',width:150,sort: true},
-                {field:'name', title: '系统名称'},
+                {field:'ID', title: 'ID',width:80,sort: true,fixed: 'left'},
+                {field:'name', title: '系统名称',width:150,fixed: 'left'},
                 {field:'describe', title: '系统描述'},
                 {field:'version', title: '系统版本号'},
                 {field:'startImgName', title: '启动图片名称'},
@@ -43,12 +43,35 @@ export default {
     },
     mounted(){
         FengunionTable('test', '/api/user/myTranferRecord', this.cols, {}, true,this.limit,this.limits).then(e => {//表格初始化
-            console.log(e)
-        })         
+            // console.log(e)
+        })    
+        layui.use(['table','jquery'], ()=>{
+            var table=layui.table,
+            $=layui.jquery
+            this.statusChange(table,$)
+        })     
     },
     methods:{
         add(){
             this.$router.push('/subsystem');
+        },
+        statusChange(table,$){
+            //监听行工具事件
+            table.on('tool(test)', (obj)=>{
+                var data = obj.data//得到所在行所有键值
+                    // console.log(data)
+                if(obj.event === 'detail'){
+                    // layer.msg('ID：'+ data.ID + ' 的查看操作');
+                    this.$router.push({name:'subsystem',params:{data}});
+                }else if(obj.event === 'del'){
+                    layer.confirm('真的删除行么', function(index){
+                        obj.del();
+                        layer.close(index);
+                    });
+                } else if(obj.event === 'edit'){
+                    this.$router.push({name:'subsystem',params:{data,flag:true}});
+                }
+            });
         }
     }
 }
