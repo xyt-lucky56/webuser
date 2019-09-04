@@ -29,6 +29,11 @@ export const routesList = [
                 name: 'permissions',
                 component: resolve => require(["@/views/permissions/permissions"], resolve),
             },
+            {
+                path: '/subsystem',
+                name: 'subsystem',
+                component: resolve => require(["@/views/system/subsystem"], resolve),
+            },
         ]
     }
 ]
