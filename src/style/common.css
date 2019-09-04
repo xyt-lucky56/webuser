@@ -75,7 +75,9 @@
   font-size: 12px;
 }
 .layui-btn-sm{
-  width:100px;
+  width: 100px;
+  height: 34px;
+  line-height: 34px;
 }
 .addbtn{
   width: 120px;
