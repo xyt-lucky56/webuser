@@ -1,6 +1,12 @@
-@blue: #3190e8;  
+@colormain: #1ab394;
+@blue: #1c84c6;
+@lightgreen: #23c6c8;
+@red: #ed5565;  
 @bc: #e4e4e4;
 @fc:#fff;
+
+
+
 
 // 背景图片地址和大小
 .bis(@url) { 
@@ -69,4 +75,21 @@
 	display: flex;
 	justify-content: @type;
 
+}
+// 按钮背景色
+// 默认绿色  主操作 
+.bgdefault {
+	background-color: @colormain;
+}
+/* 删除 */
+.bgwarn{
+	background-color: @red;
+}
+/* 编辑  次级 */
+.bgeditor{
+	background-color: @blue;
+}
+/* 查看详情 三级*/
+.bgdetail{
+	background-color: @lightgreen;
 }
