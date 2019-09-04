@@ -34,6 +34,11 @@ export const routesList = [
                 name: 'subsystem',
                 component: resolve => require(["@/views/system/subsystem"], resolve),
             },
+            {
+                path: '/subrole',
+                name: 'subrole',
+                component: resolve => require(["@/views/role/subrole"], resolve),
+            },
         ]
     }
 ]

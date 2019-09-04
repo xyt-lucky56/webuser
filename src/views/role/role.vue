@@ -3,7 +3,7 @@
         <h1>角色</h1>
         <div class="content">
             <div class="add-box">            
-                <button class="layui-btn addbtn">添加角色</button>
+                <button class="layui-btn addbtn" @click="add">添加角色</button>
             </div> 
             <!-- <button class="layui-btn layui-btn-sm" @click="submit1">按钮一</button> 
             <button class="layui-btn layui-btn-sm layui-btn-primary" @click="submit1">按钮一</button> 
@@ -11,7 +11,7 @@
             <button class="layui-btn layui-btn-xs bg1" @click="submit1">按钮一</button> 
             <button class="layui-btn layui-btn-xs bg2" @click="submit1">按钮一</button> 
             <button class="layui-btn layui-btn-xs bg3" @click="submit1">按钮一</button>  -->
-            <table class="layui-hide" lay-filter="test" id="test">
+            <table class="layui-hide" lay-filter="tableRole" id="tableRole">
                 <div id="barDemo">
                     <a class="layui-btn layui-btn-xs bgdefault" lay-event="assign">权限分配</a>
                     <a class="layui-btn layui-btn-xs bgeditor" lay-event="edit">编辑</a>
@@ -46,21 +46,32 @@ export default {
         }
     },
     mounted(){
-        FengunionTable('test', '/api/info/myTranferRecord', this.cols, {}, true,this.limit,this.limits).then(e => {//表格初始化
+        FengunionTable('tableRole', '/api/info/myTranferRecord', this.cols, {}, true,this.limit,this.limits).then(e => {//表格初始化
             console.log(e)
         }) 
-        // layui.use(['table'],()=>{
-        //     var table=layui.table
-        //     table.render({
-        //         elem:'#test',
-        //         cols:this.cols,
-        //         data:this.data,
-        //         page:true
-        //     })
-        // }) 
+        layui.use(['table'], () => {
+            this.editorBtn(layui.table)
+        }) 
     },
     methods:{
-        
+        // 监听表格操作按钮  (要想按钮触发此事件，需添加lay-event)
+        editorBtn(table) {
+            table.on('tool(tableRole)', (obj) => {
+                var data = obj.data;
+                if (obj.event === 'detail') {
+                this.$message.success('恭喜您，打开成功')
+                } else if (obj.event === 'del') {
+                this.$message.confirm('真的删除行么').then(() => {
+                    obj.del();
+                })
+                } else if (obj.event === 'edit') {
+                layer.alert('编辑行：<br>' + JSON.stringify(data))
+                }
+            });
+        },
+        add(){
+            this.$router.push({name: 'subrole'});
+        }
     }
 }
 </script>
